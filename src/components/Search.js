@@ -59,11 +59,6 @@ const StyledSearch = styled.fieldset`
     color: var(--lightGrey);
     background: transparent;
     border: none;
-
-    &:focus {
-      outline: none;// 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 0 5px 0 rgba(255,255,255,0.8), 0 0 25px 0 rgba(255,255,255,0.6);
-    }
   }
 
   button {
@@ -84,6 +79,16 @@ const StyledSearch = styled.fieldset`
       width: 4rem;
       height: 4rem;
     }
+  }
+
+  input[type=text]:focus,
+  button:focus {
+    outline: none;
+    border: 2px solid rgba(21, 65, 140,1);
+    box-shadow:
+      0 0 5px 0 rgba(21, 65, 140,0.8),
+      0 0 20px 0 rgba(21, 65, 140,0.6),
+      0 0 35px 0 rgba(21, 65, 140,0.4);
   }
 
   label {
