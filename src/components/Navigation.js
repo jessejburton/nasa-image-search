@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
   return (
     <StyledNav className="navigation">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink exact to="/" activeClassName="active">Home</NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/about" activeClassName="active">About</NavLink>
         </li>
       </ul>
     </StyledNav>
@@ -23,6 +23,7 @@ const StyledNav = styled.nav`
     align-items: center;
     justify-content: space-evenly;
     list-style: none;
+    font-size: 1.8rem;
 
     li {
       padding: 0;
@@ -32,10 +33,14 @@ const StyledNav = styled.nav`
         padding: 0.75rem 1.5rem;
         border-radius: var(--roundedEdge);
         text-decoration: none;
-        color: inherit;
+        color: var(--grey-1);
         transition: background-color 0.3s ease, color 0.3s ease;
 
-        :hover {
+        &.active {
+          color: var(--white);
+        }
+
+        :hover:not(.active) {
           background-color: var(--nasaBlue);
           color: var(--white);
         }

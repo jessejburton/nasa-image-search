@@ -1,5 +1,8 @@
+import { DotWave } from './DotWave'
+import { Image } from './Image'
 import { Images } from './Images'
+import { Loading } from './Loading'
 import { Navigation } from './Navigation'
-import { Observer } from './Observer'
+import { Search } from './Search'
 
-export { Images, Navigation, Observer }
+export { DotWave, Image, Images, Loading, Navigation, Search }

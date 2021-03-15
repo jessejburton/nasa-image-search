@@ -1,17 +1,13 @@
-import { useEffect, useState  } from 'react'
+import { useState } from 'react'
+
 import { Footer, Header, Main, Wrapper } from './'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 export const Layout = ({ children }) => {
   const [offset, setOffset] = useState(1)
 
-  useEffect(()=> {
-
-  }, [offset])
-
   useScrollPosition(({ prevPos, currPos }) => {
-    console.log(currPos.x)
-    console.log(currPos.y)
+    setOffset(currPos.y)
   })
 
   return (

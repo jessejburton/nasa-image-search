@@ -9,7 +9,8 @@ export const Content = ({ children }) => {
 }
 
 const StyledContent = styled.section`
+  min-height: 120vh;  // Make the scrollbar always appear
   width: var(--maxContentWidth);
   margin: 0 auto;
-  padding: 5rem;
+  padding: 0 5rem;
 `

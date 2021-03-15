@@ -22,9 +22,8 @@ export const useImageSearch = ( query, page, type = 'image' ) => {
       params: { q: query, page: page, media_type: type },
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
-      console.log(res)
       setImages(prevImages => {
-        return [...new Set([...prevImages, ...res.data.collection.items.map(i => i.href)])]
+        return [...new Set([...prevImages, ...res.data.collection.items.map(i => i.links[0].href)])]
       })
       setHasMore(res.data.collection.items.length > 0)
       setLoading(false)
@@ -33,7 +32,7 @@ export const useImageSearch = ( query, page, type = 'image' ) => {
       setError(true)
     })
     return () => cancel()
-  }, [query, page])
+  }, [query, page, type])
 
   return { loading, error, images, hasMore }
 }

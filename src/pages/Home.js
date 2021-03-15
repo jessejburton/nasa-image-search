@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
+
 import { Layout } from '../layout'
-import { Images } from '../components'
+import { Loading, Images, Search } from '../components'
 
 import { useImageSearch } from '../hooks'
 
@@ -14,7 +15,7 @@ export const Home = () => {
   const lastImageRef = useCallback(checkLoadMore, [loading, hasMore])
 
   function checkLoadMore(lastImage){
-    if(loading) return
+    if(loading || !hasMore) return
 
     observerRef.current = new IntersectionObserver(entries => {
       if(entries[0].isIntersecting && hasMore) {
@@ -24,25 +25,18 @@ export const Home = () => {
     if(lastImage) observerRef.current.observe(lastImage)
   }
 
-  function handleSearch(e){
-    setQuery(e.target.value)
+  function handleSearch(term){
+    setQuery(term)
     setPage(1)
   }
 
   return (
     <Layout>
-      <h1>Nasa Image Search</h1>
-
-      <fieldset>
-        <label>Search</label>
-        <input type="text" value={ query } onChange={ handleSearch } />
-      </fieldset>
-
+      <Search term='' onUpdate={ handleSearch } />
       <Images images={ images } lastImageRef={ lastImageRef } />
 
-      {loading && <div>Loading...</div>}
-      {error && <div>Error</div>}
-
+      {loading && <Loading />}
+      {error && <div>an error has occurred</div>}
     </Layout>
   )
 }

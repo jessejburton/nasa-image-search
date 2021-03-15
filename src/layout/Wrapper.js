@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import styled from 'styled-components'
+
 import stars from '../images/stars_transparent.png'
 
 export const Wrapper = ({ children, offset }) => {
@@ -28,9 +28,10 @@ const StyledWrapper = styled.div`
     background: url(${ props => props.background });
     background-attachment: fixed;
     background-size: 75% 75%;
-    background-position: 0px ${props => props.offset || 0}px;
+    background-position: 0px ${props => props.offset*0.05 || 0}px;
     z-index: -1;
     opacity: 0.25;
     filter: grayscale(1);
+    transition: background-position 1s ease-out;
   }
 `

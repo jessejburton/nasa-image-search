@@ -4,6 +4,9 @@
   // Colors
   --white: #FEFEFE;
   --black: #000000;
+  --grey: #1F2937;
+  --grey-1: #4B5563;
+  --grey-2: #111827;
   --red: #FC3D20;
   --blue: #15418C;
 
@@ -13,17 +16,19 @@
   --nasaRed: var(--red);
   --contentBackgroundColor: var(--black);
   --fontPrimaryColor: var(--white);
+  --lightGrey: var(--grey-1);
+  --darkGrey: var(--grey-2);
 
   // Sizes
   --maxContentWidth: 1100px;
-  --headerHeight: 10rem;
+  --headerHeight: 14rem;
 
   // Fonts
   --fontPrimary: 'IBM Plex Sans', sans-serif;
   --fontSecondary: 'Open Sans', sans-serif;
 
   // Decoration
-  --roundedEdge: 5px;
+  --roundedEdge: 3px;
 
   // Drop Shadows
   --smallShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
