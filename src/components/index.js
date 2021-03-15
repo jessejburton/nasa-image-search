@@ -1,3 +1,5 @@
+import { Images } from './Images'
 import { Navigation } from './Navigation'
+import { Observer } from './Observer'
 
-export { Navigation }
+export { Images, Navigation, Observer }

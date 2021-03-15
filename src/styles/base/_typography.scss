@@ -1,10 +1,10 @@
 body {
-  background: white;
+  background: var(--black);
   font-family: var(--fontPrimary);
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.75;
-  color: #000000;
+  color: var(--fontPrimaryColor);
 }
 
 p {margin-bottom: 1rem;}
