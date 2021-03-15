@@ -7,15 +7,15 @@ export const Search = ({ search = '', onUpdate }) => {
 
   const [query, setQuery] = useState(search)
 
-  function handleSearch(){
+  function handleSearch() {
     onUpdate(query)
   }
 
-  function handleKeyDown(e){
-    if(e.which === 13) handleSearch()
+  function handleKeyDown(e) {
+    if (e.which === 13) handleSearch()
   }
 
-  function handleSearchChange(e){
+  function handleSearchChange(e) {
     setQuery(e.target.value)
   }
 
@@ -25,14 +25,15 @@ export const Search = ({ search = '', onUpdate }) => {
         id="search"
         name="search"
         type="text"
-        value={ query }
+        value={query}
         placeholder="Search..."
-        onKeyDown={ handleKeyDown }
-        onChange={ handleSearchChange }
+        onKeyDown={handleKeyDown}
+        onChange={handleSearchChange}
+        autofocus
       />
       <label htmlFor="search">Search</label>
-      <button onClick={ handleSearch }>
-        <img src={ searchIcon } alt="Search" />
+      <button onClick={handleSearch}>
+        <img src={searchIcon} alt="Search" />
       </button>
     </StyledSearch>
   )
