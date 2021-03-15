@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  // Colors
+  --white: #FEFEFE;
+  --black: #000000;
+  --red: #FC3D20;
+  --blue: #15418C;
+
+  // Color Functions
+  --fontColor: var(--white);
+  --nasaBlue: var(--blue);
+  --nasaRed: var(--red);
+  --contentBackgroundColor: var(--black);
+
+  // Sizes
+  --maxContentWidth: 1100px;
+  --headerHeight: 10rem;
+
+  // Fonts
+  --fontPrimary: 'IBM Plex Sans', sans-serif;
+  --fontSecondary: 'Open Sans', sans-serif;
+
+  // Decoration
+  --roundedEdge: 5px;
+
+  // Drop Shadows
+  --smallShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --mediumShadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --largeShadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
