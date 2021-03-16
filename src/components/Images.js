@@ -8,10 +8,10 @@ export const Images = ({ images, lastImageRef }) => {
     <StyledImages className="images">
       <AnimatePresence onExitComplete={true}>
         {images.map((image, index) => {
-          if(images.length === index + 1){
-            return <Image key={ index } url={ image } alt="test" forwardRef={ lastImageRef } />
+          if (images.length === index + 1) {
+            return <Image key={index} src={image} alt="NASA Image" forwardRef={lastImageRef} />
           }
-          return <Image key={ index } url={ image } alt="test" />
+          return <Image key={index} src={image} alt="NASA Image" />
         })}
       </AnimatePresence>
     </StyledImages>

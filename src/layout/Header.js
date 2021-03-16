@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <div className="brand">
-        <img src={ logo } alt="NASA Logo" />
+        <img src={logo} alt="NASA Logo" />
         <div className="brand__text">
           <h1>NASA</h1>
           <h2>Image Search</h2>
@@ -23,6 +23,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   height: var(--headerHeight);
   padding: 0 5rem;
+  z-index: 200; // Header~Footer
 
   .brand {
     display: flex;

@@ -1,19 +1,23 @@
-import { Home, About } from './pages'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+import { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { Home, About } from './pages'
+import { ImageDisplayContext } from './context/ImageDisplayContext'
 
 function App() {
+  const [image, setImage] = useState(null)
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Router>
+    <Router>
+      <ImageDisplayContext.Provider value={{ image, setImage }}>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/search/:term" component={Home} />
           <Route path="/about" component={About} />
         </Switch>
-      </Router>
-    </QueryClientProvider>
+      </ImageDisplayContext.Provider>
+    </Router>
   );
 }
 

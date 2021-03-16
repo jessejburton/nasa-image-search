@@ -9,6 +9,8 @@
   --grey-2: #111827;
   --red: #FC3D20;
   --blue: #15418C;
+  --blue-2: #1f4068;
+  --blue-3: #162447;
 
   // Color Functions
   --fontColor: var(--white);
@@ -34,4 +36,8 @@
   --smallShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --mediumShadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --largeShadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  // Image Hover
+  --imageHoverSpeed: 0.3s;
+  --imageHoverCurve: cubic-bezier(.16,.72,.24,.92);
 }

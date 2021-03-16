@@ -6,7 +6,7 @@ export const Navigation = () => {
     <StyledNav className="navigation">
       <ul>
         <li>
-          <NavLink exact to="/" activeClassName="active">Home</NavLink>
+          <NavLink exact to="/search" activeClassName="active">Search</NavLink>
         </li>
         <li>
           <NavLink to="/about" activeClassName="active">About</NavLink>
