@@ -2,23 +2,30 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { ImageDisplayContext } from '../context/ImageDisplayContext'
+import { ImageDisplayContext, AccessibilityContext } from '../context'
 
 export const Image = ({ src, alt, ...rest }) => {
 
+  const { isAnimations } = useContext(AccessibilityContext)
   const { setImage } = useContext(ImageDisplayContext)
 
   function onHandleImageClick() {
     setImage({ src, alt })
   }
 
+  const variants = {
+    'hidden': { opacity: 0, y: 30 },
+    'visible': { opacity: 1, y: 0 }
+  }
+
   return (
     <AnimatePresence exitBeforeEnter>
       <StyledImage
         className="image"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 30 }}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        variants={isAnimations ? variants : null}
         onClick={onHandleImageClick}
         {...rest}
       >

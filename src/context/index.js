@@ -1,4 +1,5 @@
+import { AccessibilityContext } from './AccessibilityContext'
 import { ImageDisplayContext } from './ImageDisplayContext'
 import { SearchContext } from './SearchContext'
 
-export { ImageDisplayContext, SearchContext }
+export { AccessibilityContext, ImageDisplayContext, SearchContext }
