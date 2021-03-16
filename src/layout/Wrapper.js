@@ -39,7 +39,7 @@ const StyledWrapper = styled.div`
 
   &.motion-enabled::before {
     background-position: 0px ${props => props.offset * .4 || 0}px;
-    transform: rotate(${props => props.offset * .005 || 0}deg) scale(1.25);
+    transform: rotate(${props => Math.max(props.offset * 0.005, -25) || 0}deg) scale(1.25);
   }
 
   &::after {

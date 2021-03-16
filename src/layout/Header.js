@@ -1,12 +1,14 @@
-import { Navigation } from '../components'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+
+import { Navigation } from '../components'
 import logo from '../images/nasa_logo.png'
 
 export const Header = () => {
   return (
-    <StyledHeader>
+    <StyledHeader className="main-header">
       <div className="brand">
-        <img src={logo} alt="NASA Logo" />
+        <Link to="/"><img src={logo} alt="NASA Logo" /></Link>
         <div className="brand__text">
           <h1>NASA</h1>
           <h2>Image Search</h2>
@@ -24,9 +26,23 @@ const StyledHeader = styled.header`
   height: var(--headerHeight);
   padding: 0 5rem;
   z-index: 200; // Header~Footer
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  .scrolled & {
+    opacity: 0;
+  }
 
   .brand {
     display: flex;
+
+    img {
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
 
     &__text {
       display: flex;
@@ -40,6 +56,5 @@ const StyledHeader = styled.header`
       h2 {
       }
     }
-
   }
 `

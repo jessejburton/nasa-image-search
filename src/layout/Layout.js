@@ -12,15 +12,11 @@ export const Layout = ({ children }) => {
     setOffset(currPos.y)
   })
 
-  function reduceClassNames() {
+  useEffect(() => {
     let classNames = []
     classNames[0] = offset !== 0 ? 'scrolled' : 'unscrolled'
     classNames[1] = motionEnabled ? 'motion-enabled' : 'motion-disabled'
-    return classNames.join(' ')
-  }
-
-  useEffect(() => {
-    setReducedClassNames(reduceClassNames())
+    setReducedClassNames(classNames.join(' '))
   }, [offset, motionEnabled])
 
   return (

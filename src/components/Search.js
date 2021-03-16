@@ -1,44 +1,44 @@
-import { useState } from 'react'
+import { useContext, useRef } from 'react'
 import styled from 'styled-components'
+import { useHistory } from "react-router-dom";
 
 import searchIcon from '../images/search_icon.svg'
+import { SearchContext } from '../context'
 
-export const Search = ({ search = '', onUpdate }) => {
+export const Search = ({ onUpdate }) => {
 
-  const [query, setQuery] = useState(search)
+  let history = useHistory()
 
-  function handleSearch() {
-    onUpdate(query)
-  }
+  const { query } = useContext(SearchContext)
 
-  function handleKeyDown(e) {
-    if (e.which === 13) handleSearch()
-  }
+  const searchRef = useRef()
 
-  function handleSearchChange(e) {
-    setQuery(e.target.value)
+  function handleSubmitSearch(e) {
+    e.preventDefault()
+
+    history.push(`/search/${searchRef.current.value}`)
+    onUpdate(searchRef.current.value)
   }
 
   return (
-    <StyledSearch>
+    <StyledSearch onSubmit={handleSubmitSearch}>
       <img src={searchIcon} alt="Search" width="30px" height="30px" />
       <input
         id="search"
         name="search"
         type="text"
-        value={query}
+        defaultValue={query}
         placeholder="Moon, shuttle, space..."
-        onKeyDown={handleKeyDown}
-        onChange={handleSearchChange}
+        ref={searchRef}
         autoFocus
       />
       <label htmlFor="search">Search</label>
-      <button onClick={handleSearch}>Search</button>
+      <button>Search</button>
     </StyledSearch>
   )
 }
 
-const StyledSearch = styled.fieldset`
+const StyledSearch = styled.form`
   position: sticky;
   top: 14rem;
   border: none;

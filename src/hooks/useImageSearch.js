@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export const useImageSearch = ( query, page, type = 'image' ) => {
-  const [ loading, setLoading ] = useState(true)
-  const [ error, setError ] = useState(false)
-  const [ images, setImages ] = useState([])
-  const [ hasMore, setHasMore ] = useState(false)
+export const useImageSearch = (query, page, type = 'image') => {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [images, setImages] = useState([])
+  const [hasMore, setHasMore] = useState(false)
 
   useEffect(() => {
     setImages([])
   }, [query])
 
   useEffect(() => {
-    if(query.length === 0) return
+    if (query.length === 0) return
     setLoading(true)
     setError(false)
     let cancel
@@ -27,8 +27,9 @@ export const useImageSearch = ( query, page, type = 'image' ) => {
       })
       setHasMore(res.data.collection.items.length > 0)
       setLoading(false)
-    }).catch(e => {
-      if(axios.isCancel(e)) return
+    }).catch(error => {
+      if (axios.isCancel(error)) return
+      console.error(error)
       setError(true)
     })
     return () => cancel()

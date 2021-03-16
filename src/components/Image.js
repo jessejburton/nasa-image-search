@@ -1,27 +1,30 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { ImageDisplayContext } from '../context/ImageDisplayContext'
 
-export const Image = ({ src, alt }) => {
+export const Image = ({ src, alt, ...rest }) => {
 
-  const { image, setImage } = useContext(ImageDisplayContext)
+  const { setImage } = useContext(ImageDisplayContext)
 
   function onHandleImageClick() {
     setImage({ src, alt })
   }
 
   return (
-    <StyledImage
-      className="image"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 30 }}
-      onClick={onHandleImageClick}
-    >
-      <img src={src} alt={alt} />
-    </StyledImage>
+    <AnimatePresence exitBeforeEnter>
+      <StyledImage
+        className="image"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 30 }}
+        onClick={onHandleImageClick}
+        {...rest}
+      >
+        <img src={src} alt={alt} />
+      </StyledImage>
+    </AnimatePresence>
   )
 }
 
