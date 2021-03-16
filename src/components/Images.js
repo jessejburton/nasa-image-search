@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Image } from './'
 
 export const Images = ({ images }) => {
+
   return (
     <StyledImages className="images">
       {images.map((image, index) => {
