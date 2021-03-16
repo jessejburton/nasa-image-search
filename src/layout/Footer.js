@@ -20,7 +20,7 @@ export const Footer = ({ setMotionEnabled }) => {
   }, [clicked])
 
   return (
-    <StyledFooter>
+    <StyledFooter className="main-footer">
       <div className="star-toggle" title="Toggle Star Lock">
         <input type="checkbox" id="stars" name="stars" onChange={toggleStars} />
         <label htmlFor="stars" />
@@ -129,7 +129,7 @@ const StyledFooter = styled.footer`
         }
       }
 
-      &::after {
+      &::before {
         content: '';
         position: absolute;
         top: -75px;

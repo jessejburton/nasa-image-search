@@ -21,7 +21,7 @@ export const Search = ({ onUpdate }) => {
   }
 
   return (
-    <StyledSearch onSubmit={handleSubmitSearch}>
+    <StyledSearch className="search-form" onSubmit={handleSubmitSearch}>
       <img src={searchIcon} alt="Search" width="30px" height="30px" />
       <input
         id="search"

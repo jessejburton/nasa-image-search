@@ -10,26 +10,29 @@ function App() {
   const [query, setQuery] = useState('')
   const [isAnimations, setIsAnimations] = useState(false)
 
-  /* Disable animations for mobile */
-  useEffect(()=> {
-    if(window.screen.width > 975){
+  /* DISABLE ANIMATIONS ON MOBILE
+  * Animations will be off by default so I am enabling
+  * them if the screen is larger than 975px
+  */
+  useEffect(() => {
+    if (window.screen.width > 975) {
       setIsAnimations(true)
     }
-  },[])
+  }, [])
 
   return (
     <Router>
       <AccessibilityContext.Provider value={{ isAnimations, setIsAnimations }}>
-      <SearchContext.Provider value={{ query, setQuery }}>
-      <ImageDisplayContext.Provider value={{ image, setImage }}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/search" component={Home} />
-          <Route path="/search/:term" component={Home} />
-          <Route path="/about" component={About} />
-        </Switch>
-      </ImageDisplayContext.Provider>
-      </SearchContext.Provider>
+        <SearchContext.Provider value={{ query, setQuery }}>
+          <ImageDisplayContext.Provider value={{ image, setImage }}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/search" component={Home} />
+              <Route path="/search/:term" component={Home} />
+              <Route path="/about" component={About} />
+            </Switch>
+          </ImageDisplayContext.Provider>
+        </SearchContext.Provider>
       </AccessibilityContext.Provider>
     </Router>
   );
