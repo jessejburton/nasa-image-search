@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <StyledHeader className="main-header">
       <div className="brand">
-        <Link to="/"><img src={logo} alt="NASA Logo" /></Link>
+        <Link to="/"><img src={logo} alt="NASA Logo" width="107px" height="88px" /></Link>
         <div className="brand__text">
           <h1>NASA</h1>
           <h2>Image Search</h2>
