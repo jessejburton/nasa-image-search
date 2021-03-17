@@ -62,12 +62,26 @@ const StyledSearch = styled.form`
   width: 100%;
   border-radius: var(--roundedEdge);
   z-index: 500; // Search
-  transition: opacity 0.3s ease, width 0.3s ease;
   /* mixin - blueShadowLight */
   box-shadow:
       0 0 5px 0 rgba(49,144,207,0.8),
       0 0 20px 0 rgba(49,144,207,0.6),
       0 0 35px 0 rgba(49,144,207,0.4);
+  opacity: 0;
+  animation: fadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeIn {
+    0% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
 
   &::before {
     content: '';

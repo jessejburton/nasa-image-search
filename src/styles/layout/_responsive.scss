@@ -5,7 +5,6 @@
 * fixed by bringing the styles in to the stylesheet.
 */
 
-
 @include below(1100px) {
   html {
     font-size: 56.25%;
@@ -46,6 +45,7 @@
   }
 
 }
+
 
 @include below(700px) {
   .image-display__title {

@@ -1,8 +1,14 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const About = () => {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.5, y: 30 }}
+      transition={{ duration: 0.3 }}
+    >
       <StyledAbout>
         <h1>NASA Image Search</h1>
         <p className="highlight">
@@ -15,7 +21,7 @@ export const About = () => {
 
         </p>
       </StyledAbout>
-    </>
+    </motion.div>
   )
 }
 

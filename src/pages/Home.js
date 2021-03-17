@@ -1,6 +1,7 @@
 import { useState, useRef, useContext, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 import { Loading, Images, Search, ImageDisplay } from '../components'
 import { SearchContext } from '../context'
