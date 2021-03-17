@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -8,32 +8,33 @@ export const ImageDisplay = () => {
 
   const { image, setImage } = useContext(ImageDisplayContext)
 
-  const variants = {
-    visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 1 },
-  }
-
   function onHandleClickCatcher(event) {
     const target = document.elementFromPoint(event.clientX, event.clientY)
     if (target.classList.contains("click-catcher")) {
-      setImage(null)
+      onHandleCloseImage(null)
     }
   }
 
+  function onHandleCloseImage(){
+    setImage(null)
+  }
+
   return (
-    <AnimatePresence exitBeforeEnter="true" className="image-display">
+    <AnimatePresence exitBeforeEnter className="image-display">
       {image &&
         <StyledImageDisplay
           key="ImageDisplay"
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={variants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           className="click-catcher"
           data-js="onHandleClickCatcher"
           onClick={onHandleClickCatcher}
+          tabindex="0"
+          autoFocus
         >
+        <AnimatePresence exitBeforeEnter>
           <motion.img
+            key={image.src}
             initial={{opacity: 0, x: -30}}
             animate={{opacity: 1, x: 0}}
             exit={{opacity: 0, x: -30}}
@@ -41,7 +42,10 @@ export const ImageDisplay = () => {
             alt={image.title}
             title={image.title}
           />
+        </AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
           <motion.span
+            key={image.title}
             initial={{opacity: 0, x: 30}}
             animate={{opacity: 1, x: 0}}
             exit={{opacity: 0, x: 30}}
@@ -49,6 +53,7 @@ export const ImageDisplay = () => {
           >
             {image.title}
           </motion.span>
+        </AnimatePresence>
         </StyledImageDisplay>
       }
     </AnimatePresence>

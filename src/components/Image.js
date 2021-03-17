@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -6,11 +6,26 @@ import { ImageDisplayContext, AccessibilityContext } from '../context'
 
 export const Image = ({ src, title, ...rest }) => {
 
+  const imageRef = useRef()
+
   const { isAnimations } = useContext(AccessibilityContext)
   const { setImage } = useContext(ImageDisplayContext)
 
   function onHandleImageClick() {
     setImage({ src, title })
+  }
+
+  function onHandleMouseOver() {
+    if(!document.querySelector(".image:focus")) imageRef.current.focus()
+  }
+
+  function onHandleKeyDown(e) {
+    if(e.keyCode === 9){
+      e.target.blur()
+    }
+    if(e.keyCode === 13){
+      onHandleImageClick()
+    }
   }
 
   const variants = {
@@ -27,7 +42,11 @@ export const Image = ({ src, title, ...rest }) => {
         exit="hidden"
         variants={isAnimations ? variants : null}
         onClick={onHandleImageClick}
+        onMouseOver={onHandleMouseOver}
+        onKeyDown={onHandleKeyDown}
         {...rest}
+        tabIndex="0"
+        ref={imageRef}
       >
         <img src={src} alt={title} title={title} />
       </StyledImage>
@@ -37,6 +56,7 @@ export const Image = ({ src, title, ...rest }) => {
 
 const StyledImage = styled(motion.div)`
   position: relative;
+  outline: 1px solid var(--lighBlue);
   transition: transform var(--imageHoverSpeed) var(--imageHoverCurve);
 
   img {
@@ -67,7 +87,8 @@ const StyledImage = styled(motion.div)`
     transition: opacity var(--imageHoverSpeed) var(--imageHoverCurve);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.1)!important;
 
     img {
