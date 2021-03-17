@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 
-import { Layout } from '../layout'
-
 export const About = () => {
   return (
-    <Layout>
+    <>
       <StyledAbout>
         <h1>NASA Image Search</h1>
         <p className="highlight">
@@ -17,7 +15,7 @@ export const About = () => {
 
         </p>
       </StyledAbout>
-    </Layout>
+    </>
   )
 }
 

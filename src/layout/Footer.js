@@ -53,7 +53,7 @@ const StyledFooter = styled.footer`
 
   .star-toggle {
     input[type=checkbox] {
-      display: none;
+      opacity: 0;
     }
 
     label {
@@ -81,6 +81,14 @@ const StyledFooter = styled.footer`
       border-radius: 15%;
       background-color: var(--grey-2);
       transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    input[type=checkbox]:focus + label::before {
+      /* mixin ~ blueShadowLight */
+      box-shadow:
+        0 0 5px 0 rgba(49,144,207,0.8),
+        0 0 20px 0 rgba(49,144,207,0.6),
+        0 0 35px 0 rgba(49,144,207,0.4);
     }
 
     input[type=checkbox]:checked + label::before {
@@ -157,6 +165,20 @@ const StyledFooter = styled.footer`
         }
       }
 
+      &:focus {
+        box-shadow:
+          0 0 5px 0 rgba(49,144,207,0.8),
+          0 0 20px 0 rgba(49,144,207,0.6),
+          0 0 35px 0 rgba(49,144,207,0.4);
+      }
+    }
+
+    p {
+      transition: opacity 0.3s ease;
+    }
+
+    .scrolled & p {
+      opacity: 0.3;
     }
   }
 `

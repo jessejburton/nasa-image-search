@@ -2,7 +2,6 @@ import { useState, useRef, useContext, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 
-import { Layout } from '../layout'
 import { Loading, Images, Search, ImageDisplay } from '../components'
 import { SearchContext } from '../context'
 
@@ -38,7 +37,7 @@ export const Home = () => {
 
   useEffect(() => {
     if (!observerRef.current) return
-    const observer = new IntersectionObserver((entries)=> {
+    const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setPage(prevPage => prevPage + 1)
       }
@@ -47,7 +46,7 @@ export const Home = () => {
   }, [observerRef])
 
   return (
-    <Layout>
+    <>
       <Search onUpdate={handleSearch} />
       <Images images={images} />
       <ImageDisplay image={null} />
@@ -60,7 +59,7 @@ export const Home = () => {
 
       <Loading isLoading={loading} />
       {error && <div>an error has occurred</div>}
-    </Layout>
+    </>
   )
 }
 
@@ -73,6 +72,7 @@ const StyledObserver = styled.div`
   z-index: 400; // Observer
 
   button {
+    display: none;
     cursor: pointer;
     border: none;
     background: none;
