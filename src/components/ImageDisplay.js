@@ -55,10 +55,10 @@ const StyledImageDisplay = styled(motion.div)`
 
   img {
     max-width: 80vw;
-    /* mixin ~ blueShadow */
+    /* mixin - blueShadowLight */
     box-shadow:
-      0 0 5px 0 rgba(21, 65, 140,0.8),
-      0 0 20px 0 rgba(21, 65, 140,0.6),
-      0 0 35px 0 rgba(21, 65, 140,0.4);
+        0 0 5px 0 rgba(49,144,207,0.8),
+        0 0 20px 0 rgba(49,144,207,0.6),
+        0 0 35px 0 rgba(49,144,207,0.4);
   }
 `

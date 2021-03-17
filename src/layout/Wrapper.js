@@ -4,7 +4,7 @@ import stars from '../images/stars_transparent.png'
 
 export const Wrapper = ({ children, offset, ...rest }) => {
   return (
-    <StyledWrapper background={stars} offset={offset} {...rest} >
+    <StyledWrapper offset={offset} {...rest}>
       {children}
     </StyledWrapper>
   )
@@ -25,8 +25,8 @@ const StyledWrapper = styled.div`
     left: 0;
     width: 130vw;
     height: 130vh;
-    z-index: -1;
-    background: url(${props => props.background});
+    z-index: 0;
+    background: url(${stars});
     background-attachment: fixed;
     background-repeat: repeat;
     background-size: 75% 75%;
@@ -38,7 +38,7 @@ const StyledWrapper = styled.div`
   }
 
   &.motion-enabled::before {
-    background-position: 0px ${props => props.offset * .4 || 0}px;
+    background-position: 0px ${props => props.offset * .3 || 0}px;
     transform: rotate(${props => Math.max(props.offset * 0.005, -25) || 0}deg) scale(1.25);
   }
 

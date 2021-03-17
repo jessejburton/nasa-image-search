@@ -36,6 +36,10 @@ const StyledHeader = styled.header`
   .brand {
     display: flex;
 
+    a:active img {
+      transform: scale(0.7);
+    }
+
     img {
       transition: transform 0.3s ease;
 

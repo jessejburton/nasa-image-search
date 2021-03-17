@@ -1,0 +1,24 @@
+body {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../images/cloud_background.jpg);
+    background-size: contain;
+    background-attachment: fixed;
+    opacity: 0.6;
+    transform-origin: center center;
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  &.motion-enabled::before {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+}
