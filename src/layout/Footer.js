@@ -23,7 +23,7 @@ export const Footer = ({ setMotionEnabled }) => {
     <StyledFooter className="main-footer">
       <div className="star-toggle" title="Toggle Star Lock">
         <input type="checkbox" id="stars" name="stars" onChange={toggleStars} />
-        <label htmlFor="stars" />
+        <label htmlFor="stars"><span>Toggle Star Lock</span></label>
       </div>
       <div className="copyright">
         <button
@@ -59,6 +59,12 @@ const StyledFooter = styled.footer`
     label {
       position: relative;
       cursor: pointer;
+
+      span {
+        display: block;
+        width: 0;
+        overflow: hidden;
+      }
     }
 
     label::before,
