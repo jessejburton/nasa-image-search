@@ -13,6 +13,12 @@ export const Search = ({ onUpdate }) => {
 
   const searchRef = useRef()
 
+
+  function clearSearch() {
+
+  }
+
+
   function handleSubmitSearch(e) {
     e.preventDefault()
 
@@ -20,9 +26,16 @@ export const Search = ({ onUpdate }) => {
     onUpdate(searchRef.current.value)
   }
 
+
   return (
     <StyledSearch className="search-form" onSubmit={handleSubmitSearch}>
-      <img src={searchIcon} alt="Search" width="30px" height="30px" />
+      <img
+        src={searchIcon}
+        alt="Search"
+        width="30px"
+        height="30px"
+        onClick={clearSearch}
+      />
       <input
         id="search"
         name="search"
@@ -33,7 +46,7 @@ export const Search = ({ onUpdate }) => {
         autoFocus
       />
       <label htmlFor="search">Search</label>
-      <button>Search</button>
+      <button><span>Search</span></button>
     </StyledSearch>
   )
 }
@@ -91,10 +104,23 @@ const StyledSearch = styled.form`
     font-size: 2rem;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.1s ease;
 
-    img {
-      width: 4rem;
-      height: 4rem;
+    span {
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover span {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      background-color: var(--nasaBlue);
+
+      span {
+        transform: scale(0.9);
+      }
     }
   }
 
