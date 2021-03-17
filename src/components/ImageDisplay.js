@@ -21,7 +21,7 @@ export const ImageDisplay = () => {
   }
 
   return (
-    <AnimatePresence exitBeforeEnter="true">
+    <AnimatePresence exitBeforeEnter="true" className="image-display">
       {image &&
         <StyledImageDisplay
           key="ImageDisplay"
@@ -33,7 +33,22 @@ export const ImageDisplay = () => {
           data-js="onHandleClickCatcher"
           onClick={onHandleClickCatcher}
         >
-          <img src={image.src} alt={image.alt} />
+          <motion.img
+            initial={{opacity: 0, x: -30}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: -30}}
+            src={image.src}
+            alt={image.title}
+            title={image.title}
+          />
+          <motion.span
+            initial={{opacity: 0, x: 30}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: 30}}
+            className="image-display__title"
+          >
+            {image.title}
+          </motion.span>
         </StyledImageDisplay>
       }
     </AnimatePresence>
@@ -60,5 +75,19 @@ const StyledImageDisplay = styled(motion.div)`
         0 0 5px 0 rgba(49,144,207,0.8),
         0 0 20px 0 rgba(49,144,207,0.6),
         0 0 35px 0 rgba(49,144,207,0.4);
+  }
+
+  span {
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+    width: 60%;
+    padding: 5rem;
+    font-size: 6rem;
+    text-align: right;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 12px rgba(0,0,0,0.8);
   }
 `

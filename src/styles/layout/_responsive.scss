@@ -1,3 +1,10 @@
+/*
+* The items marked for cleanup in this file are currently
+* needing !important flags because the locally scoped
+* styled components are overriding the styles. This will be
+* fixed by bringing the styles in to the stylesheet.
+*/
+
 
 @include below(1100px) {
   html {
@@ -36,5 +43,12 @@
 
   .search-form {
     top: 5rem!important; // cleanup
+  }
+
+}
+
+@include below(700px) {
+  .image-display__title {
+    font-size: 4rem!important; //cleanup
   }
 }

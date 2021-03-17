@@ -7,7 +7,12 @@ export const Images = ({ images }) => {
   return (
     <StyledImages className="images">
       {images.map((image, index) => {
-        return <Image key={index} src={image} alt="NASA Image" />
+        return <Image
+          key={index}
+          src={image.src}
+          alt={image.title}
+          title={image.title}
+        />
       })}
     </StyledImages>
   )

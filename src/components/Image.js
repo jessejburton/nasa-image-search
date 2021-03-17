@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { ImageDisplayContext, AccessibilityContext } from '../context'
 
-export const Image = ({ src, alt, ...rest }) => {
+export const Image = ({ src, title, ...rest }) => {
 
   const { isAnimations } = useContext(AccessibilityContext)
   const { setImage } = useContext(ImageDisplayContext)
 
   function onHandleImageClick() {
-    setImage({ src, alt })
+    setImage({ src, title })
   }
 
   const variants = {
@@ -29,7 +29,7 @@ export const Image = ({ src, alt, ...rest }) => {
         onClick={onHandleImageClick}
         {...rest}
       >
-        <img src={src} alt={alt} />
+        <img src={src} alt={title} title={title} />
       </StyledImage>
     </AnimatePresence>
   )

@@ -23,7 +23,10 @@ export const useImageSearch = (query, page, type = 'image') => {
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
       setImages(prevImages => {
-        return [...new Set([...prevImages, ...res.data.collection.items.map(i => i.links[0].href)])]
+        return [...new Set([...prevImages, ...res.data.collection.items.map(i => ({
+          src: i.links[0].href,
+          title: i.data[0].title
+        }))])]
       })
       setHasMore(res.data.collection.items.length > 0)
       setLoading(false)
