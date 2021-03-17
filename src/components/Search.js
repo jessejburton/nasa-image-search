@@ -62,6 +62,7 @@ const StyledSearch = styled.form`
   width: 100%;
   border-radius: var(--roundedEdge);
   z-index: 500; // Search
+  transition: width 0.3s ease, top 0.3s ease;
   /* mixin - blueShadowLight */
   box-shadow:
       0 0 5px 0 rgba(49,144,207,0.8),
