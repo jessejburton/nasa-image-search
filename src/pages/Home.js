@@ -1,7 +1,6 @@
 import { useState, useRef, useContext, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
 
 import { Loading, Images, Search, ImageDisplay } from '../components'
 import { SearchContext } from '../context'
@@ -38,12 +37,16 @@ export const Home = () => {
 
   useEffect(() => {
     if (!observerRef.current) return
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setPage(prevPage => prevPage + 1)
-      }
-    })
-    observer.observe(observerRef.current)
+    try {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          setPage(prevPage => prevPage + 1)
+        }
+      })
+      observer.observe(observerRef.current)
+    } catch (error) {
+      console.error(error)
+    }
   }, [observerRef])
 
   return (

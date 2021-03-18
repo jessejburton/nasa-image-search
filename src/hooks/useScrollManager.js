@@ -6,8 +6,9 @@ export function useScrollManager() {
   const direction = useRef(1)
 
   function handleScroll(e) {
-    if (window.innerWidth < 975) return
-
+    if (window.innerWidth < 975) {
+      return
+    }
     e.preventDefault()
     /*
       Would like to change this to use prev and current positions instead of Wheel   Delta since it isn't fully reliable and causes double negatives when trying

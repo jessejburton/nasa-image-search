@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<div
+  className="sc-dQppl jRqONB"
+  offset={0}
+>
+  <header
+    className="sc-kEjbxe gRVJOQ main-header"
+  >
+    <div
+      className="brand"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          alt="NASA Logo"
+          height="88px"
+          src="nasa_logo.png"
+          width="107px"
+        />
+      </a>
+      <div
+        className="brand__text"
+      >
+        <h1>
+          NASA
+        </h1>
+        <h2>
+          Image Search
+        </h2>
+      </div>
+    </div>
+    <nav
+      className="sc-gKsewC jpKiMD navigation"
+    >
+      <ul>
+        <li>
+          <a
+            aria-current={null}
+            href="/search"
+            onClick={[Function]}
+          >
+            Search
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            href="/about"
+            onClick={[Function]}
+          >
+            About
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main
+    className="sc-crrsfI jAbpuG"
+  >
+    <section
+      className="sc-iqHYGH fMgunm content"
+    >
+      <form
+        className="sc-iBPRYJ dDTOch search-form"
+        onSubmit={[Function]}
+      >
+        <button
+          height="30px"
+          name="clear"
+          onClick={[Function]}
+          title="Clear search results"
+          type="button"
+          width="30px"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-search fa-w-16"
+            data-icon="search"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill="#1f4068"
+            />
+          </svg>
+        </button>
+        <input
+          autoFocus={true}
+          defaultValue=""
+          id="search"
+          name="search"
+          placeholder="Moon, shuttle, space..."
+          type="text"
+        />
+        <label
+          htmlFor="search"
+        >
+          Search
+        </label>
+        <button
+          name="search"
+          type="submit"
+        >
+          <span>
+            Search
+          </span>
+        </button>
+      </form>
+      <div
+        className="sc-eCssSg jusRuS images"
+      />
+      <div
+        className="sc-fubCfw epawrs"
+      />
+    </section>
+  </main>
+  <footer
+    className="sc-jrAGrp XIxSn main-footer"
+  >
+    <div
+      className="star-toggle"
+      title="Toggle Star Lock"
+    >
+      <input
+        id="stars"
+        name="stars"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label
+        htmlFor="stars"
+      >
+        <span>
+          Toggle Star Lock
+        </span>
+      </label>
+    </div>
+    <div
+      className="copyright"
+    >
+      <button
+        className=""
+        onClick={[Function]}
+        title="Back to Top"
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-caret-up fa-w-10"
+          data-icon="caret-up"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <p>
+        copyright © 
+        2021
+      </p>
+    </div>
+  </footer>
+</div>
+`;

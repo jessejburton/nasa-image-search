@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
-import { useScrollManager } from '../hooks/useScrollManager'
+//import { useScrollManager } from '../hooks/useScrollManager'
 import stars from '../images/stars_transparent.png'
 
 export const Wrapper = ({ children, offset, ...rest }) => {
 
+  /* Work In Progress */
   //useScrollManager()
 
   return (
