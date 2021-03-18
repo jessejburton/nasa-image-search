@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
+
 export const About = () => {
   return (
     <motion.div
@@ -24,6 +25,7 @@ export const About = () => {
     </motion.div>
   )
 }
+
 
 const StyledAbout = styled.div`
   padding-top: 6rem;

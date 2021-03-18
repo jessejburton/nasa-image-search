@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom";
 
+
 export const Navigation = () => {
   return (
     <StyledNav className="navigation">
@@ -15,6 +16,7 @@ export const Navigation = () => {
     </StyledNav>
   )
 }
+
 
 const StyledNav = styled.nav`
   ul {

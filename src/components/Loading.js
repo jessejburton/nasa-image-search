@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { DotWave } from './'
 
+
 export const Loading = ({ isLoading = false }) => {
   if (!isLoading) return null
   return (
@@ -10,6 +11,7 @@ export const Loading = ({ isLoading = false }) => {
     </StyledLoading>
   )
 }
+
 
 const StyledLoading = styled.div`
   position: fixed;

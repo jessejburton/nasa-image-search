@@ -1,5 +1,12 @@
+/*
+* Use Image Search
+* Hook used for fetchiing images from the NASA API
+* Automatically gets new data whenever the page parameter
+* is changed.
+*/
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+
 
 export const useImageSearch = (query, page, type = 'image') => {
   const [loading, setLoading] = useState(false)
@@ -7,9 +14,11 @@ export const useImageSearch = (query, page, type = 'image') => {
   const [images, setImages] = useState([])
   const [hasMore, setHasMore] = useState(false)
 
+
   useEffect(() => {
     setImages([])
   }, [query])
+
 
   useEffect(() => {
     if (query.length === 0) return
@@ -37,6 +46,7 @@ export const useImageSearch = (query, page, type = 'image') => {
     })
     return () => cancel()
   }, [query, page, type])
+
 
   return { loading, error, images, hasMore }
 }

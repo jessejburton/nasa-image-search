@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { Image } from './'
 
+
 export const Images = ({ images }) => {
 
   return (
@@ -17,6 +18,7 @@ export const Images = ({ images }) => {
     </StyledImages>
   )
 }
+
 
 const StyledImages = styled.div`
   padding-bottom: 5rem;

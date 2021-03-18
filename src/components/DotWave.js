@@ -1,6 +1,11 @@
+/*
+* Grabbed From my component library https://github.com/jessejburton/ui
+* Needs to be updated to my current coding structure
+*/
 import React from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+
 
 const containerVariants = {
   start: {
@@ -29,6 +34,7 @@ const dotTransition = {
   yoyo: Infinity,
   ease: 'easeInOut'
 }
+
 
 export const DotWave = ({ ...rest }) => {
   return (

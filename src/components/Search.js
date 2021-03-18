@@ -1,16 +1,19 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
 
 import { SearchContext } from '../context'
 
-export const Search = ({ onUpdate }) => {
 
-  let history = useHistory()
+export const Search = ({ onUpdate }) => {
+  const [reducedClassNames, setReducedClassNames] = useState('')
 
   const { query } = useContext(SearchContext)
 
   const searchRef = useRef()
+
+  let history = useHistory()
+
 
   function clearSearch(e) {
     e.preventDefault()
@@ -20,12 +23,14 @@ export const Search = ({ onUpdate }) => {
     onUpdate('')
   }
 
+
   function handleSubmitSearch(e) {
     e.preventDefault()
 
     history.push(`/search/${searchRef.current.value}`)
     onUpdate(searchRef.current.value)
   }
+
 
   return (
     <StyledSearch

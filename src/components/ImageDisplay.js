@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { ImageDisplayContext } from '../context/ImageDisplayContext'
 
+
 export const ImageDisplay = () => {
 
   const { image, setImage } = useContext(ImageDisplayContext)
+
 
   function onHandleClickCatcher(event) {
     const target = document.elementFromPoint(event.clientX, event.clientY)
@@ -15,9 +17,10 @@ export const ImageDisplay = () => {
     }
   }
 
-  function onHandleCloseImage(){
+  function onHandleCloseImage() {
     setImage(null)
   }
+
 
   return (
     <AnimatePresence exitBeforeEnter className="image-display">
@@ -32,34 +35,35 @@ export const ImageDisplay = () => {
           tabindex="0"
           autoFocus
         >
-        <AnimatePresence exitBeforeEnter>
-          <motion.img
-            key={image.src}
-            initial={{opacity: 0, x: -30}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: -30}}
-            src={image.src}
-            alt={image.title}
-            title={image.title}
-          />
-        </AnimatePresence>
-        <AnimatePresence exitBeforeEnter>
-          <motion.span
-            key={image.title}
-            initial={{opacity: 0, x: 30}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: 30}}
-            className="image-display__title"
-          >
-            {image.title}
-          </motion.span>
-        </AnimatePresence>
+          <AnimatePresence exitBeforeEnter>
+            <motion.img
+              key={image.src}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -30 }}
+              src={image.src}
+              alt={image.title}
+              title={image.title}
+            />
+          </AnimatePresence>
+          <AnimatePresence exitBeforeEnter>
+            <motion.span
+              key={image.title}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 30 }}
+              className="image-display__title"
+            >
+              {image.title}
+            </motion.span>
+          </AnimatePresence>
         </StyledImageDisplay>
       }
     </AnimatePresence>
 
   )
 }
+
 
 const StyledImageDisplay = styled(motion.div)`
   position: fixed;

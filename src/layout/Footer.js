@@ -1,23 +1,29 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
+
+
 export const Footer = ({ setMotionEnabled }) => {
 
   const [clicked, setClicked] = useState(false)
 
+
   function toggleStars(event) {
     setMotionEnabled(event.target.checked)
   }
+
 
   function onHandleToTopClick(event) {
     setClicked(true)
     window.scrollTo(0, 0)
   }
 
+
   // Set clicked back to false
   useEffect(() => {
     if (!clicked) return
     setTimeout(() => setClicked(false), 1500)
   }, [clicked])
+
 
   return (
     <StyledFooter className="main-footer">
@@ -38,6 +44,7 @@ export const Footer = ({ setMotionEnabled }) => {
     </StyledFooter>
   )
 }
+
 
 const StyledFooter = styled.footer`
   position: fixed;

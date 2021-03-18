@@ -1,9 +1,22 @@
+/*
+* Use Scroll Manager
+* Used to overide the default scroll behavior and provide a smoother
+* experience.
+*
+* Currently working on this, there are some issues with mobile which
+* has smooth scroll already so I am working on disabling it for smaller
+* screen sizes.
+*
+* IDEA: perhaps this could be expanded to include Intersection Observers
+*/
 import { useRef, useLayoutEffect } from 'react'
+
 
 export function useScrollManager() {
 
   const speed = useRef(0)
   const direction = useRef(1)
+
 
   function handleScroll(e) {
     if (window.innerWidth < 975) {
@@ -23,6 +36,7 @@ export function useScrollManager() {
   function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end
   }
+
 
   useLayoutEffect(() => {
     function tick() {
@@ -53,5 +67,4 @@ export function useScrollManager() {
 
     return () => window.removeEventListener(wheelEvent, handleScroll, wheelOpt);
   }, [])
-
 }

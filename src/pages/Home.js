@@ -7,6 +7,7 @@ import { SearchContext } from '../context'
 
 import { useImageSearch } from '../hooks'
 
+
 export const Home = () => {
   let { term } = useParams();
 
@@ -18,14 +19,17 @@ export const Home = () => {
 
   const observerRef = useRef()
 
+
   function loadMore() {
     setPage(prevPage => prevPage + 1)
   }
+
 
   function handleSearch(term) {
     setQuery(term)
     setPage(1)
   }
+
 
   useEffect(() => {
     if (!term) {
@@ -34,6 +38,7 @@ export const Home = () => {
     }
     setQuery(term)
   }, [term, setQuery])
+
 
   useEffect(() => {
     if (!observerRef.current) return
@@ -48,6 +53,7 @@ export const Home = () => {
       console.error(error)
     }
   }, [observerRef])
+
 
   return (
     <>
@@ -66,6 +72,7 @@ export const Home = () => {
     </>
   )
 }
+
 
 const StyledObserver = styled.div`
   display: flex;

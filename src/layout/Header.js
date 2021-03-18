@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Navigation } from '../components'
 import logo from '../images/nasa_logo.png'
 
+
 export const Header = () => {
   return (
     <StyledHeader className="main-header">
@@ -18,6 +19,7 @@ export const Header = () => {
     </StyledHeader>
   )
 }
+
 
 const StyledHeader = styled.header`
   display: flex;

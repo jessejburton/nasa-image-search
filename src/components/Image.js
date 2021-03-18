@@ -4,12 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { ImageDisplayContext, AccessibilityContext } from '../context'
 
-export const Image = ({ src, title, ...rest }) => {
 
-  const imageRef = useRef()
+export const Image = ({ src, title, ...rest }) => {
 
   const { isAnimations } = useContext(AccessibilityContext)
   const { setImage } = useContext(ImageDisplayContext)
+
+  const imageRef = useRef()
 
   function onHandleImageClick() {
     setImage({ src, title })
@@ -28,10 +29,12 @@ export const Image = ({ src, title, ...rest }) => {
     }
   }
 
+  /* Not sure where to keep these yet */
   const variants = {
     'hidden': { opacity: 0, y: 30 },
     'visible': { opacity: 1, y: 0 }
   }
+
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -44,15 +47,17 @@ export const Image = ({ src, title, ...rest }) => {
         onClick={onHandleImageClick}
         onMouseOver={onHandleMouseOver}
         onKeyDown={onHandleKeyDown}
-        {...rest}
         tabIndex="0"
         ref={imageRef}
+        isAnimations={isAnimations}
+        {...rest}
       >
         <img src={src} alt={title} title={title} />
       </StyledImage>
     </AnimatePresence>
   )
 }
+
 
 const StyledImage = styled(motion.div)`
   position: relative;
@@ -89,7 +94,8 @@ const StyledImage = styled(motion.div)`
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
+    // cleanup ~ to do with animations
+    transform: scale(${props => props.isAnimations ? 1.1 : 1})!important;
 
     img {
       filter: grayscale(0);
