@@ -28,17 +28,21 @@ To create a production build run
 
 
 // Export const component name - I typically use named exports unless a default makes more sense.
-	// State
- 	// Context
-	// Refs
-	// OtherHooks
 
-  // Functions
+    // State
 
-  // Effects
+    // Context
+	
+    // Refs
+	
+    // OtherHooks
 
-	// if Loading //
-	// Return Component //
+    // Functions
+
+    // Effects
+
+    // if Loading
+    // Return Component
 
 // Export statement (if not above, in the case of default export or if it's being wrapped in a higher
 order function //
