@@ -5,7 +5,7 @@ import stars from '../images/stars_transparent.png'
 
 export const Wrapper = ({ children, offset, ...rest }) => {
 
-  useScrollManager()
+  //useScrollManager()
 
   return (
     <StyledWrapper offset={offset} {...rest}>

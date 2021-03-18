@@ -9,6 +9,10 @@ export function useScrollManager() {
     if (window.innerWidth < 975) return
 
     e.preventDefault()
+    /*
+      Would like to change this to use prev and current positions instead of Wheel   Delta since it isn't fully reliable and causes double negatives when trying
+      to multiply direction
+    */
     direction.current = e.wheelDeltaY < 0 ? 1 : -1
     speed.current += Math.abs(e.wheelDeltaY) * 0.2
     speed.current = Math.min(speed.current, 200)
@@ -33,7 +37,7 @@ export function useScrollManager() {
     }
     tick()
 
-    // modern Chrome requires { passive: false } when adding event
+    // Modern Chrome requires { passive: false } when adding event
     var supportsPassive = false;
     try {
       window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
