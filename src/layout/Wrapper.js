@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 
+import { useScrollManager } from '../hooks/useScrollManager'
 import stars from '../images/stars_transparent.png'
 
 export const Wrapper = ({ children, offset, ...rest }) => {
+
+  useScrollManager()
+
   return (
     <StyledWrapper offset={offset} {...rest}>
       {children}
     </StyledWrapper>
   )
+
 }
 
 const StyledWrapper = styled.div`

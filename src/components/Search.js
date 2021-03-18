@@ -8,7 +8,7 @@ export const Search = ({ onUpdate }) => {
 
   let history = useHistory()
 
-  const { query, setQuery } = useContext(SearchContext)
+  const { query } = useContext(SearchContext)
 
   const searchRef = useRef()
 
@@ -28,7 +28,10 @@ export const Search = ({ onUpdate }) => {
   }
 
   return (
-    <StyledSearch className="search-form" onSubmit={handleSubmitSearch}>
+    <StyledSearch
+      className="search-form"
+      onSubmit={handleSubmitSearch}
+    >
       <button
         name="clear"
         title="Clear search results"
@@ -58,6 +61,7 @@ const StyledSearch = styled.form`
   top: 14rem;
   border: none;
   padding: 2.5rem;
+  display: block;
   margin: 0 auto 7.5rem auto;
   width: 100%;
   border-radius: var(--roundedEdge);
