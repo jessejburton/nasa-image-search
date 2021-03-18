@@ -16,14 +16,14 @@ export const Image = ({ src, title, ...rest }) => {
   }
 
   function onHandleMouseOver() {
-    if(!document.querySelector(".image:focus")) imageRef.current.focus()
+    if (!document.querySelector(".image:focus")) imageRef.current.focus()
   }
 
   function onHandleKeyDown(e) {
-    if(e.keyCode === 9){
+    if (e.keyCode === 9) {
       e.target.blur()
     }
-    if(e.keyCode === 13){
+    if (e.keyCode === 13) {
       onHandleImageClick()
     }
   }
@@ -89,7 +89,7 @@ const StyledImage = styled(motion.div)`
 
   &:hover,
   &:focus {
-    transform: scale(1.1)!important;
+    transform: scale(1.1);
 
     img {
       filter: grayscale(0);

@@ -6,6 +6,8 @@ export function useScrollManager() {
   const direction = useRef(1)
 
   function handleScroll(e) {
+    if (window.innerWidth < 975) return
+
     e.preventDefault()
     direction.current = e.wheelDeltaY < 0 ? 1 : -1
     speed.current += Math.abs(e.wheelDeltaY) * 0.2

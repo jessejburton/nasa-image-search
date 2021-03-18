@@ -48,6 +48,16 @@
 
 
 @include below(700px) {
+
+  .content {
+    padding: 0 6rem!important;
+  }
+
+  .image:focus,
+  .image:hover {
+    transform: none!important;
+  }
+
   .image-display__title {
     font-size: 4rem!important; //cleanup
   }
