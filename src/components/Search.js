@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext, useRef } from 'react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
 
@@ -6,8 +6,6 @@ import { SearchContext } from '../context'
 
 
 export const Search = ({ onUpdate }) => {
-  const [reducedClassNames, setReducedClassNames] = useState('')
-
   const { query } = useContext(SearchContext)
 
   const searchRef = useRef()
@@ -15,16 +13,17 @@ export const Search = ({ onUpdate }) => {
   let history = useHistory()
 
 
-  function clearSearch(e) {
+  function onHandleClearSearch(e) {
+    console.log("here")
     e.preventDefault()
 
     searchRef.current.value = ''
-    history.push(`/search`)
+    history.push(`/`)
     onUpdate('')
   }
 
 
-  function handleSubmitSearch(e) {
+  function onHandleSubmitSearch(e) {
     e.preventDefault()
 
     history.push(`/search/${searchRef.current.value}`)
@@ -34,8 +33,9 @@ export const Search = ({ onUpdate }) => {
 
   return (
     <StyledSearch
+      data-js={query ? 'has-searched' : 'has-not-searched'}
       className="search-form"
-      onSubmit={handleSubmitSearch}
+      onSubmit={onHandleSubmitSearch}
     >
       <button
         name="clear"
@@ -43,7 +43,7 @@ export const Search = ({ onUpdate }) => {
         width="30px"
         height="30px"
         type="button"
-        onClick={clearSearch}>
+        onClick={onHandleClearSearch}>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" className="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#1f4068" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
       </button>
       <input
@@ -63,15 +63,15 @@ export const Search = ({ onUpdate }) => {
 
 const StyledSearch = styled.form`
   position: sticky;
-  top: 14rem;
+  top: 10rem;
   border: none;
   padding: 2.5rem;
   display: block;
-  margin: 0 auto 7.5rem auto;
+  margin: 2.5rem auto 7.5rem auto;
   width: 100%;
   border-radius: var(--roundedEdge);
   z-index: 500; // Search
-  transition: width 0.3s ease, top 0.3s ease;
+  transition: width 0.3s ease, top 0.5s ease-in-out;
   /* mixin - blueShadowLight */
   box-shadow:
       0 0 5px 0 rgba(49,144,207,0.8),
@@ -91,6 +91,10 @@ const StyledSearch = styled.form`
       transform: scale(1);
       opacity: 1;
     }
+  }
+
+  &[data-js="has-not-searched"]{
+    top: calc(50% - 5rem); // Centered
   }
 
   &::before {
@@ -123,6 +127,7 @@ const StyledSearch = styled.form`
     background: none;
     outline: none;
     border: none;
+    z-index: 450; // Clear Search
     transform-origin: center center;
     transition: transform 0.1s ease;
   }

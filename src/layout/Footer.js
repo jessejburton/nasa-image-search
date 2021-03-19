@@ -191,7 +191,7 @@ const StyledFooter = styled.footer`
     }
 
     .scrolled & p {
-      opacity: 0.3;
+      opacity: 0.5;
     }
   }
 `
