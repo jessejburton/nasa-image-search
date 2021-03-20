@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { Loading, Images, Search, ImageDisplay } from '../components'
 import { SearchContext } from '../context'
+import { PageHelmet } from '../layout'
 
 import { useImageSearch } from '../hooks'
 
@@ -57,6 +58,7 @@ export const Home = () => {
 
   return (
     <>
+      <PageHelmet title={(query && query + ' | ') + 'NASA Image Search'} />
       <Search onUpdate={handleSearch} />
       <Images images={images} />
       <ImageDisplay image={null} />

@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
+import { PageHelmet } from '../layout'
+
 
 export const About = () => {
   return (
@@ -10,6 +12,7 @@ export const About = () => {
       exit={{ opacity: 0, scale: 0.5, y: 30 }}
       transition={{ duration: 0.3 }}
     >
+      <PageHelmet title='About | NASA Image Search' />
       <StyledAbout>
         <h1>NASA Image Search</h1>
         <p className="highlight">
