@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Navigation } from '../components'
-import logo from '../images/nasa_logo.png'
+import logo from '../assets/images/nasa_logo.png'
 
 
 export const Header = () => {

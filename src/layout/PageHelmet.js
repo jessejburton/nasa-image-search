@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet'
 
-import logo from '../images/nasa_logo.png'
+import logo from '../assets/images/nasa_logo.png'
 
 const defaults = {
   title: 'NASA Image Search',

@@ -1,14 +1,15 @@
 import styled from 'styled-components'
 
 
-//import { useScrollManager } from '../hooks/useScrollManager'
-import stars from '../images/stars_transparent.png'
+import { useScrollManager } from '../hooks/useScrollManager'
+import stars from '../assets/images/stars_transparent.png'
 
 
 export const Wrapper = ({ children, offset, ...rest }) => {
 
-  /* Work In Progress */
-  //useScrollManager()
+
+  useScrollManager()
+
 
   return (
     <StyledWrapper offset={offset} {...rest}>

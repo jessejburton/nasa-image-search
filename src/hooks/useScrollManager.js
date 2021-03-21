@@ -19,9 +19,6 @@ export function useScrollManager() {
 
 
   function handleScroll(e) {
-    if (window.innerWidth < 975) {
-      return
-    }
     e.preventDefault()
     /*
       Would like to change this to use prev and current positions instead of Wheel   Delta since it isn't fully reliable and causes double negatives when trying
@@ -34,11 +31,13 @@ export function useScrollManager() {
 
   /* TODO - Move to utility */
   function lerp(start, end, amt) {
-    return (1 - amt) * start + amt * end
+    return start * (1 - amt) + end * amt
   }
 
 
   useLayoutEffect(() => {
+    if (window.innerWidth < 975) return
+
     function tick() {
       speed.current = lerp(speed.current, 0, 0.2)
       if (speed.current < 0.5) speed.current = 0
