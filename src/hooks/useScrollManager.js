@@ -30,8 +30,8 @@ export function useScrollManager() {
   }
 
   /* TODO - Move to utility */
-  function lerp(start, end, amt) {
-    return start * (1 - amt) + end * amt
+  function lerp(start, end, amount) {
+    return start * (1 - amount) + end * amount
   }
 
 
@@ -41,11 +41,13 @@ export function useScrollManager() {
     function tick() {
       speed.current = lerp(speed.current, 0, 0.2)
       if (speed.current < 0.5) speed.current = 0
+
       setTimeout(() => {
-        if (speed) {
+        if (speed.current) {
           const nextScrollY = window.scrollY + (speed.current * direction.current)
           window.scrollTo(0, nextScrollY)
         }
+
         window.requestAnimationFrame(tick)
       }, 60)
     }
@@ -55,7 +57,7 @@ export function useScrollManager() {
     var supportsPassive = false;
     try {
       window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-        get: function () { supportsPassive = true; }
+        get: () => supportsPassive = true
       }));
     } catch (e) { }
 
@@ -66,4 +68,6 @@ export function useScrollManager() {
 
     return () => window.removeEventListener(wheelEvent, handleScroll, wheelOpt);
   }, [])
+
 }
+

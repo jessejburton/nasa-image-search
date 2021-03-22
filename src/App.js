@@ -5,15 +5,19 @@ import { AnimatePresence } from 'framer-motion'
 
 import { Home, About } from './pages'
 import { Layout } from './layout'
-import { AccessibilityContext, ImageDisplayContext, SearchContext } from './context'
+import {
+  AccessibilityContext,
+  ImageDisplayContext,
+  SearchContext
+} from './context'
 
 function App() {
   const [image, setImage] = useState(null)
   const [query, setQuery] = useState('')
   const [isAnimations, setIsAnimations] = useState(false)
 
-  /* DISABLE ANIMATIONS ON MOBILE
-  * Animations will be off by default so I am enabling
+  /* ENABLE ANIMATIONS ON DESKTOP
+  * Animations will be off by default, I am enabling
   * them if the screen is larger than 975px
   */
   useEffect(() => {

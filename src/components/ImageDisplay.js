@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -76,6 +76,8 @@ const StyledImageDisplay = styled(motion.div)`
   justify-content: center;
   background-color: rgba(0,0,0,0.6);
   z-index: 1000; // Image Display Modal
+  transform-style: preserve-3d;
+  perspective: 1000px;
 
   img {
     max-width: 80vw;

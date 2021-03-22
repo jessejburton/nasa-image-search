@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-import { Image } from './'
+import { ImageSingle } from './'
 
 
 export const Images = ({ images }) => {
 
   return (
-    <StyledImages className="images">
+    <StyledImages className="images" data-js="scrollspeed">
       {images.map((image, index) => {
-        return <Image
+        return <ImageSingle
           key={index}
           src={image.src}
           alt={image.title}
@@ -26,4 +26,5 @@ const StyledImages = styled.div`
   .last {
     border: 4px solid red;
   }
+
 `

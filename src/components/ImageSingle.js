@@ -1,11 +1,11 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { ImageDisplayContext, AccessibilityContext } from '../context'
 
 
-export const Image = ({ src, title, ...rest }) => {
+export const ImageSingle = ({ src, title, ...rest }) => {
 
   const { isAnimations } = useContext(AccessibilityContext)
   const { setImage } = useContext(ImageDisplayContext)
@@ -36,6 +36,19 @@ export const Image = ({ src, title, ...rest }) => {
   }
 
 
+  useEffect(() => {
+    if (!src) return
+
+    var img = new Image();
+    img.onload = function () {
+      imageRef.current.innerHTML = '' // Avoid adding it twice * bug
+      imageRef.current.appendChild(img)
+    }
+    img.src = src;
+
+  }, [src])
+
+
   return (
     <AnimatePresence exitBeforeEnter>
       <StyledImage
@@ -52,7 +65,6 @@ export const Image = ({ src, title, ...rest }) => {
         isAnimations={isAnimations}
         {...rest}
       >
-        <img src={src} alt={title} title={title} />
       </StyledImage>
     </AnimatePresence>
   )
@@ -61,8 +73,23 @@ export const Image = ({ src, title, ...rest }) => {
 
 const StyledImage = styled(motion.div)`
   position: relative;
-  outline: 1px solid var(--lighBlue);
   transition: transform var(--imageHoverSpeed) var(--imageHoverCurve);
+  width: 100%;
+  height: 175px;
+  background: rgba(49,144,207,0.1);
+
+  animation: imageBackgroundPulse 1s ease alternate;
+  animation-iteration-count: infinite;
+
+  /* MOVE TO ANIMATIONS */
+  @keyframes imageBackgroundPulse {
+    0% {
+      background: rgba(49,144,207,0.2);
+    }
+    100% {
+      background: rgba(49,144,207,0.3);
+    }
+  }
 
   img {
     position: relative;
@@ -74,6 +101,19 @@ const StyledImage = styled(motion.div)`
     filter: grayscale(0.75);
     cursor: pointer;
     transition: filter var(--imageHoverSpeed) var(--imageHoverCurve);
+    opacity: 0;
+    animation: imageAppear 1s ease;
+    animation-fill-mode: forwards;
+  }
+
+  /* MOVE TO ANIMATIONS */
+  @keyframes imageAppear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   &::before {
@@ -95,6 +135,7 @@ const StyledImage = styled(motion.div)`
   &:hover,
   &:focus {
     // cleanup ~ to do with animations
+    outline: 1px solid var(--lightBlue);
     transform: scale(${props => props.isAnimations ? 1.1 : 1})!important;
 
     img {
