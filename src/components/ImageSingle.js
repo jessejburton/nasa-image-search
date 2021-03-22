@@ -13,7 +13,8 @@ export const ImageSingle = ({ src, title, ...rest }) => {
   const imageRef = useRef()
 
   function onHandleImageClick() {
-    setImage({ src, title })
+    const originalSrc = src.replace('~thumb', '~orig')
+    setImage({ src: originalSrc, title })
   }
 
   function onHandleMouseOver() {

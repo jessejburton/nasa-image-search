@@ -20,7 +20,6 @@ export const Layout = ({ children }) => {
     classNames[0] = offset !== 0 ? 'scrolled' : 'unscrolled'
     classNames[1] = motionEnabled ? 'motion-enabled' : 'motion-disabled'
     setReducedClassNames(classNames.join(' '))
-    document.body.dataset.y = offset
 
     if (motionEnabled) {
       document.body.classList.add("motion-enabled")

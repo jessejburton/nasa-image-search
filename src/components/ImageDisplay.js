@@ -81,6 +81,7 @@ const StyledImageDisplay = styled(motion.div)`
 
   img {
     max-width: 80vw;
+    max-height: 80vh;
     /* mixin - blueShadowLight */
     box-shadow:
         0 0 5px 0 rgba(49,144,207,0.8),
