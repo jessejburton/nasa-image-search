@@ -24,6 +24,7 @@ function App() {
     if (window.screen.width > 975) {
       setIsAnimations(true)
     }
+
   }, [])
 
   return (

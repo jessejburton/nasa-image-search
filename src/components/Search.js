@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
 
@@ -14,10 +14,10 @@ export const Search = ({ onUpdate }) => {
 
 
   function onHandleClearSearch(e) {
-    console.log("here")
     e.preventDefault()
 
     searchRef.current.value = ''
+    searchRef.current.focus()
     history.push(`/`)
     onUpdate('')
   }
@@ -29,6 +29,19 @@ export const Search = ({ onUpdate }) => {
     history.push(`/search/${searchRef.current.value}`)
     onUpdate(searchRef.current.value)
   }
+
+  useEffect(() => {
+    function onHandleKeyDown(e) {
+      if (e.keyCode === 191) {
+        e.preventDefault()
+        searchRef.current.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onHandleKeyDown)
+
+    return () => document.removeEventListener('keydown', onHandleKeyDown)
+  }, [])
 
 
   return (
