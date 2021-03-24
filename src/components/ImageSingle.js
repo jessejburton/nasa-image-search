@@ -7,18 +7,24 @@ import { ImageDisplayContext } from '../context'
 
 export const ImageSingle = ({ src, title, ...rest }) => {
 
-  const { setImage } = useContext(ImageDisplayContext)
+  const { image, setImage } = useContext(ImageDisplayContext)
 
   const imageRef = useRef()
 
+
   function onHandleImageClick(e) {
-    const originalSrc = src.replace('~thumb', '~orig')
+    const originalSrc = src //src.replace('~thumb', '~orig') // They don't all have hi quality images - Temporarily disabled
     setImage({ src: originalSrc, title })
   }
 
-  function onHandleMouseOver() {
-    if (!document.querySelector(".image:focus")) imageRef.current.focus()
+
+  function onHandleImageFocus(e) {
+    if (!image) return
+
+    const originalSrc = src //src.replace('~thumb', '~orig') // They don't all have hi quality images - Temporarily disabled
+    setImage({ src: originalSrc, title })
   }
+
 
   function onHandleKeyDown(e) {
     if (e.keyCode === 9) {
@@ -28,6 +34,7 @@ export const ImageSingle = ({ src, title, ...rest }) => {
       onHandleImageClick()
     }
   }
+
 
   /* Not sure where to keep these yet */
   const variants = {
@@ -61,7 +68,7 @@ export const ImageSingle = ({ src, title, ...rest }) => {
         exit="hidden"
         variants={isAnimations ? variants : null}
         onClick={onHandleImageClick}
-        onMouseOver={onHandleMouseOver}
+        onFocus={onHandleImageFocus}
         onKeyDown={onHandleKeyDown}
         tabIndex="0"
         ref={imageRef}
@@ -148,5 +155,11 @@ const StyledImage = styled(motion.div)`
     &::before {
       opacity: 1;
     }
+  }
+
+
+  &:active {
+
+    transform: scale(1.05)!important;
   }
 `
