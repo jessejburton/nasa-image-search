@@ -1,6 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export function useScrollManager() {
+
+  const [position, setPosition] = useState({ x: 0, y: 0 })
 
   function handleScroll(e) {
     if (window.scrollY > 0) {
@@ -8,6 +10,11 @@ export function useScrollManager() {
     } else {
       document.body.classList.remove("scrolled")
     }
+
+    setPosition({
+      x: window.scrollX,
+      y: window.scrollY
+    })
   }
 
   useEffect(() => {
@@ -28,5 +35,6 @@ export function useScrollManager() {
     return () => window.removeEventListener("scroll", handleScroll, wheelOpt);
   }, [])
 
+  return { position }
 }
 

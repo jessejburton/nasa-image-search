@@ -19,34 +19,33 @@ export const useImageSearch = (query, page, type = 'image') => {
     setImages([])
   }, [query])
 
-
-  useEffect(() => {
-    if (query.length === 0) return
-    setLoading(true)
-    setError(false)
-    let cancel
-    axios({
-      method: 'GET',
-      url: `https://picsum.photos/v2/list`,
-    }).then(res => {
-      setImages(prevImages => {
-        return [...new Set([...prevImages, ...res.data.map(i => ({
-          src: i.download_url,
-          title: i.author
-        }))])]
+  /* FOR WHEN NASA IMAGE SEARCH IS DOWN
+    useEffect(() => {
+      if (query.length === 0) return
+      setLoading(true)
+      setError(false)
+      let cancel
+      axios({
+        method: 'GET',
+        url: `https://picsum.photos/v2/list`,
+      }).then(res => {
+        setImages(prevImages => {
+          return [...new Set([...prevImages, ...res.data.map(i => ({
+            src: i.download_url,
+            title: i.author
+          }))])]
+        })
+        setHasMore(true)
+        setLoading(false)
+      }).catch(error => {
+        if (axios.isCancel(error)) return
+        console.error(error)
+        setError(true)
       })
-      setHasMore(true)
-      setLoading(false)
-    }).catch(error => {
-      if (axios.isCancel(error)) return
-      console.error(error)
-      setError(true)
-    })
-    //return () => cancel()
-  }, [query])
+      //return () => cancel()
+    }, [query])
+  */
 
-
-  /* NASA Image search is currently down
   useEffect(() => {
     if (query.length === 0) return
     setLoading(true)
@@ -73,7 +72,6 @@ export const useImageSearch = (query, page, type = 'image') => {
     })
     return () => cancel()
   }, [query, page, type])
-  */
 
   return { loading, error, images, hasMore }
 }

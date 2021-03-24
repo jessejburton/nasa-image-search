@@ -6,10 +6,10 @@ import { useScrollManager } from '../hooks'
 
 export const Wrapper = ({ children, ...rest }) => {
 
-  useScrollManager()
+  const { position } = useScrollManager()
 
   return (
-    <StyledWrapper {...rest}>
+    <StyledWrapper offset={position.y} {...rest}>
       {children}
     </StyledWrapper>
   )
@@ -40,11 +40,11 @@ const StyledWrapper = styled.div`
     opacity: 0.8;
     filter: grayscale(1);
     transition:
-      background-position 4s cubic-bezier(.08,.63,.26,.99),
-      transform 4s cubic-bezier(.08,.63,.26,.99);
+      background-position 2s cubic-bezier(.08,.63,.26,.99),
+      transform 2s cubic-bezier(.08,.63,.26,.99);
   }
 
-  &.motion-enabled::before {
+  .motion-enabled &::before {
     background-position: 0px ${props => props.offset * .3 || 0}px;
     transform: rotate(${props => Math.max(props.offset * 0.005, -25) || 0}deg) scale(1.25);
   }
