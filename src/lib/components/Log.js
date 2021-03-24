@@ -4,7 +4,7 @@
 *
 * <Log message="Home Component Rendered" />
 */
-export function Log({ message = 'Log ran with no message.' }) {
+export const Log = ({ message = 'No message provided' }) => {
   console.log(message)
   return null
 }

@@ -149,13 +149,15 @@ const StyledImageDisplay = styled(motion.div)`
     font-size: 2rem;
     cursor: pointer;
     border: none;
-    background: rgba(74,74,74,0.8);
+    background: rgba(0,0,0,0);
     color: var(--lightGrey);
     opacity: 0.5;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
   .close:hover {
     opacity: 0.8;
+    color: var(--white);
+    background: rgba(34,34,34,0.8);
   }
 `
