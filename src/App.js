@@ -6,7 +6,6 @@ import { AnimatePresence } from 'framer-motion'
 import { Home, About } from './pages'
 import { Layout } from './layout'
 import {
-  AccessibilityContext,
   ImageDisplayContext,
   SearchContext
 } from './context'
@@ -14,7 +13,7 @@ import {
 function App() {
   const [image, setImage] = useState(null)
   const [query, setQuery] = useState('')
-  const [isAnimations, setIsAnimations] = useState(false)
+  const [isReducedMotion, setIsReducedMotion] = useState(true)
 
   /* ENABLE ANIMATIONS ON DESKTOP
   * Animations will be off by default, I am enabling
@@ -22,7 +21,7 @@ function App() {
   */
   useEffect(() => {
     if (window.screen.width > 975) {
-      setIsAnimations(true)
+      setIsReducedMotion(false)
     }
 
   }, [])
@@ -30,20 +29,18 @@ function App() {
   return (
     <Router>
       <Layout>
-        <AccessibilityContext.Provider value={{ isAnimations, setIsAnimations }}>
-          <SearchContext.Provider value={{ query, setQuery }}>
-            <ImageDisplayContext.Provider value={{ image, setImage }}>
-              <AnimatePresence exitBeforeEnter>
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/search" component={Home} />
-                  <Route path="/search/:term" component={Home} />
-                  <Route path="/about" component={About} />
-                </Switch>
-              </AnimatePresence>
-            </ImageDisplayContext.Provider>
-          </SearchContext.Provider>
-        </AccessibilityContext.Provider>
+        <SearchContext.Provider value={{ query, setQuery }}>
+          <ImageDisplayContext.Provider value={{ image, setImage }}>
+            <AnimatePresence exitBeforeEnter>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/search" component={Home} />
+                <Route path="/search/:term" component={Home} />
+                <Route path="/about" component={About} />
+              </Switch>
+            </AnimatePresence>
+          </ImageDisplayContext.Provider>
+        </SearchContext.Provider>
       </Layout>
     </Router>
   );
