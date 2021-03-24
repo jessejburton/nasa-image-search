@@ -4,7 +4,7 @@
 * instead of just disappears
 */
 
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -27,6 +27,30 @@ export const ImageDisplay = () => {
   function onHandleCloseImage() {
     setImage(null)
   }
+
+
+  useEffect(() => {
+    if (image) {
+      document.addEventListener('keydown', onHandleKeyDown)
+    } else {
+      document.removeEventListener('keydown', onHandleKeyDown)
+    }
+
+    function onHandleKeyDown(e) {
+      console.log(e.keyCode)
+      if (e.keyCode === 27) {
+        onHandleCloseImage()
+      }
+      if (e.keyCode === 39) {
+        const next = document.querySelector(".image:focus").nextSibling
+        if (next) next.focus()
+      }
+      if (e.keyCode === 37) {
+        const prev = document.querySelector(".image:focus").previousSibling
+        if (prev) prev.focus()
+      }
+    }
+  }, [image])
 
 
   return (
