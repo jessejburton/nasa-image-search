@@ -19,6 +19,7 @@ export const useImageSearch = (query, page, type = 'image') => {
     setImages([])
   }, [query])
 
+
   useEffect(() => {
     if (query.length === 0) return
     setLoading(true)
@@ -42,7 +43,8 @@ export const useImageSearch = (query, page, type = 'image') => {
       setError(true)
     })
     //return () => cancel()
-  }, [query, page, type])
+  }, [query])
+
 
   /* NASA Image search is currently down
   useEffect(() => {

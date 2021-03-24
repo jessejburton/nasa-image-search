@@ -8,7 +8,11 @@ export const Footer = ({ setMotionEnabled }) => {
 
 
   function toggleStars(event) {
-    setMotionEnabled(event.target.checked)
+    if (document.body.classList.contains('motion-enabled')) {
+      document.body.classList.remove('motion-enabled')
+    } else {
+      document.body.classList.add('motion-enabled')
+    }
   }
 
 

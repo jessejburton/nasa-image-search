@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion'
 
@@ -13,18 +13,7 @@ import {
 function App() {
   const [image, setImage] = useState(null)
   const [query, setQuery] = useState('')
-  const [isReducedMotion, setIsReducedMotion] = useState(true)
 
-  /* ENABLE ANIMATIONS ON DESKTOP
-  * Animations will be off by default, I am enabling
-  * them if the screen is larger than 975px
-  */
-  useEffect(() => {
-    if (window.screen.width > 975) {
-      setIsReducedMotion(false)
-    }
-
-  }, [])
 
   return (
     <Router>

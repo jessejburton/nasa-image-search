@@ -2,17 +2,16 @@ import { useContext, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import { ImageDisplayContext, AccessibilityContext } from '../context'
+import { ImageDisplayContext } from '../context'
 
 
 export const ImageSingle = ({ src, title, ...rest }) => {
 
-  const { isAnimations } = useContext(AccessibilityContext)
   const { setImage } = useContext(ImageDisplayContext)
 
   const imageRef = useRef()
 
-  function onHandleImageClick() {
+  function onHandleImageClick(e) {
     const originalSrc = src.replace('~thumb', '~orig')
     setImage({ src: originalSrc, title })
   }
@@ -35,6 +34,9 @@ export const ImageSingle = ({ src, title, ...rest }) => {
     'hidden': { opacity: 0, y: 30 },
     'visible': { opacity: 1, y: 0 }
   }
+
+  // Disable animations on mobile
+  let isAnimations = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) > 675
 
 
   useEffect(() => {

@@ -57,6 +57,7 @@ export const ImageDisplay = () => {
               {image.title}
             </motion.span>
           </AnimatePresence>
+          <button onClick={onHandleCloseImage} className="close">X</button>
         </StyledImageDisplay>
       }
     </AnimatePresence>
@@ -75,6 +76,7 @@ const StyledImageDisplay = styled(motion.div)`
   align-items: center;
   justify-content: center;
   background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
   z-index: 1000; // Image Display Modal
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -101,5 +103,26 @@ const StyledImageDisplay = styled(motion.div)`
     text-transform: uppercase;
     text-shadow:
       0 0 12px rgba(0,0,0,0.8);
+  }
+
+  .close {
+    position: fixed;
+    top: 0;
+    right: 12px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 2rem;
+    cursor: pointer;
+    border: none;
+    background: rgba(74,74,74,0.8);
+    color: var(--lightGrey);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+
+  .close:hover {
+    opacity: 0.8;
   }
 `
